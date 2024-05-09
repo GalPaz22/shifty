@@ -66,7 +66,7 @@ const DayPage = () => {
               htmlFor="tariff"
               className="block text-sm font-medium text-gray-700"
             >
-              Tariff:
+              Rate:
             </label>
             <select
               id="tariff"
@@ -74,7 +74,7 @@ const DayPage = () => {
               onChange={(e) => setTariff(e.target.value)}
               className="input"
             >
-              <option value="">Select Tariff</option>
+              <option value="">Select Rate</option>
               <option value="80">80</option>
               <option value="100">100</option>
               <option value={tariffList[0]}>{tariffList[0]}</option>

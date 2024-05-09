@@ -15,10 +15,10 @@ const TariffRender = ({ tariffList, setTariffList }) => {
 
   return (
     <div className=" bg-gray-300 p-4 rounded-md">
-      <h2 className="text-xl font-bold mb-4">New Tariff Value</h2>
+      <h2 className="text-xl font-bold mb-4">New Rate Value</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="tariff" className="block text-sm font-medium text-gray-700 mb-2">
-          Enter Tariff:
+          Enter Rate:
         </label>
         <input
           type="number"

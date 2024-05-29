@@ -29,10 +29,23 @@ const TariffRender = ({ tariffList, setTariffList }) => {
           className="input mb-4"
           required
         />
-        <button type="submit" className="btn">
+        <button type="submit" className="bg-blue-500 hover:bg-gray-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline">
           Submit
         </button>
       </form>
+
+      <div className="mt-4">
+        <h2 className="text-xl font-bold mb-4">Current Rate List</h2>
+        <ul>
+            <li>80₪</li>
+            <li>100₪</li>
+          {tariffList.map((newTariff, index) => (
+            <li key={index} className="mb-2">
+              {newTariff + '₪'}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

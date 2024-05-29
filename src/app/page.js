@@ -1,4 +1,4 @@
-'use client';
+'use client'
 import React, { useState } from "react";
 import CustomDatePicker from "./DatePicker";
 import DayCard from "./DayCard.js";
@@ -7,6 +7,7 @@ import { StateProvider } from "./providers/StateProvider";
 import { useStateContext } from "./providers/StateProvider";
 import RenderList from "./RenderList";
 import TariffRender from "./TariffRender";
+
 
 const IndexPage = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -20,8 +21,8 @@ const IndexPage = () => {
     const daysInMonth = getDaysInMonth(selectedDate);
     const firstDayOfMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1);
     const lastDayOfMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), daysInMonth);
-    const start = startOfWeek(firstDayOfMonth, { weekStartsOn: 1 }); // Start of the first week
-    const end = endOfWeek(lastDayOfMonth, { weekStartsOn: 1 }); // End of the last week
+    const start = startOfWeek(firstDayOfMonth, { weekStartsOn: 0 }); // Start of the first week
+    const end = endOfWeek(lastDayOfMonth, { weekStartsOn: 0 }); // End of the last week
     const days = eachDayOfInterval({ start, end }); // Get all days of the month
     const daysMatrix = [];
   
@@ -35,17 +36,17 @@ const IndexPage = () => {
 
   return (
     <StateProvider>
-      <div className="container mx-auto px-4 py-8 flex ">
-        <div className="w-1/2 md:w-3/4 mr">
-          <h1 className="text-3xl font-bold mb-4">Choose a Month</h1>
-          <CustomDatePicker
-            selectedDate={selectedDate}
-            onChange={handleDateChange}
-            dateFormat="MMMM yyyy"
-            showMonthYearPicker
-          />
-          <h2 className="text-xl font-bold mt-8 mb-4"> {format(selectedDate, "MMMM yyyy")}</h2>
-          <table className="table-auto">
+      <div className="container mx-auto ">
+        <h1 className="text-3xl font-bold mb-4 mt-2">Choose a Month</h1>
+        <CustomDatePicker
+          selectedDate={selectedDate}
+          onChange={handleDateChange}
+          dateFormat="MMMM yyyy"
+          showMonthYearPicker
+        />
+        <h2 className="text-xl font-bold mt-8 mb-4">{format(selectedDate, "MMMM yyyy")}</h2>
+        <div className="mx-auto w-auto flex">
+          <table className="table-auto w-full md:w-1/2 mb-8 md:mb-0">
             <thead>
               <tr>
                 {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
@@ -65,14 +66,13 @@ const IndexPage = () => {
               ))}
             </tbody>
           </table>
-        </div>
-        <div className="w-full md:w-1/4 pl-4 mt-8">
-          <RenderList itemsList={itemsList} setItemsList={setItemsList} className="max-w-md mx-auto mt-8 p-6 bg-white shadow-md rounded-md ml-4 mb-4"/>
-      <TariffRender tariffList={tariffList} setTariffList={setTariffList} setTariff={setTariff} />
+          <div className="mx-auto w-auto ml-8">
+            <RenderList itemsList={itemsList} setItemsList={setItemsList} className="max-w-md mx-auto mt-8 p-6 bg-white shadow-md rounded-md mb-4" />
+            <TariffRender tariffList={tariffList} setTariffList={setTariffList} setTariff={setTariff} className=" mx-auto p-6 bg-white shadow-md rounded-md" />
+            
+          </div>
         </div>
       </div>
-     
-     
     </StateProvider>
   );
 };

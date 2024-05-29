@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" integrity="sha512-YEvSlJ7lFL7Ss/5dWeIzGxpujO0CwFGoDYkDwOdmJKrhz/3Ig/yC8j87n6CbO3YCe45OCesPvOUJvJ5I/rgRg==" crossOrigin="anonymous" referrerPolicy="no-referrer" />
         <style>{inter.styles}</style>
       </head>
-      <body className="bg-blue-100 font-sans flex flex-col items-center justify-start min-h-screen">
+      <body className="bg-blue-100">
         <StateProvider>
           {children}
         </StateProvider>
